@@ -1,0 +1,57 @@
+{% include 'header.html' %}
+
+
+
+
+
+
+
+<div class="card shadow m-5">
+
+    <div class="card-body">
+
+        <h5 class="p-2" style=" border-bottom: 2px solid gray;">Employee Login</h5>
+        <div class="container-fluid">
+            <form method="post" >
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="col-sm-6">
+                        <div class="col-group">
+                            <label >Email ID</label>
+                            <input type="email" name="emailid" class="form-control"  required>
+                        </div>   
+                        
+                    </div>        
+
+                </div>
+                <div class="form-row">
+                    <div class="col-sm-6">
+                        <div class="col-group">
+                            <label >Password</label>
+                            <input type="password" name="password" class="form-control" required>
+                        </div>                                
+                                                                    
+                    </div>    
+                </div>                                      
+               
+                <input type="submit" value="Login" class="m-2 btn btn-primary">
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% if error == "no" %}
+<script>
+    alert('Logged in Successfully');
+    window.location = ('{% url 'home' %}');
+</script>
+{% endif %}
+{% if error == "yes" %}
+<script>
+    alert('Invalid login Credentials , Try again.....');
+   
+</script>
+{% endif %}
